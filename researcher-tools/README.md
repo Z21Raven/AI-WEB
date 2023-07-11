@@ -24,7 +24,7 @@ npm run dev
 
 ### Usage
 
-- 1- There are two articles in the Demo.txt + one about AI in chip industry from ieee xplore https://ieeexplore.ieee.org/document/9996124 + the other from weki about batman
+- 1. There are two articles in the Demo.txt + one about AI in chip industry from ieee xplore https://ieeexplore.ieee.org/document/9996124 + the other from weki about batman
 - 2. copy one of the article and paste it in the paragraph textarea
 - 3. if you press on summarize button wait for a seconds and then boom, the result will be shown
 - 4. if you write your question like "what is the name of batman" "what does batman represent?" "why use DNN" then press enter, wait a seconds then the result will shown
