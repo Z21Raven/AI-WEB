@@ -8,6 +8,7 @@ const props = defineProps({
   paragraph: String,
 });
 
+// this is the format of data that a 'modelQuery' function want as an argument.
 const modelInputs = computed(() => {
   return {
     inputs: {
@@ -33,6 +34,7 @@ const answerQ = async () => {
       text: "There is no question to Answer",
     });
   } else {
+    // the argument is the computed property which is consist of question and context as inputs.
     modelQuery(modelInputs.value).then((response) => {
       try {
         modelAnswer.value = response.answer;

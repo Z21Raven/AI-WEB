@@ -1,12 +1,14 @@
 <script setup>
 import { ref, computed } from "vue";
-import { inference } from "./summaryModel.js";
+import { inference } from "./summaryModel.js"; //inference.summarization will use the wnted AI model
 
+// summarizedText is the ref that will handle the result of summarization that will be produced by a paragraphSummary function
 const summarizedText = ref("");
 const props = defineProps({
   paragraph: String,
 });
 
+// This function will return sweetalert for the mentioned reasons below.if everything ok it will generate a summarized text
 const paragraphSummary = async () => {
   if (props.paragraph == "") {
     Swal.fire({
@@ -18,6 +20,7 @@ const paragraphSummary = async () => {
     return;
   }
   let result = await inference.summarization({
+    // you can use one of the models that shown below
     // models: facebook/bart-large-cnn,sshleifer/distilbart-cnn-12-6
     model: "facebook/bart-large-cnn",
     inputs: props.paragraph,
@@ -30,6 +33,7 @@ const paragraphSummary = async () => {
   }
 };
 
+// to count the characters of summarized text to compare it with origin paragraph
 const answerCount = computed(() => {
   return summarizedText.value.length;
 });
@@ -37,6 +41,7 @@ const answerCount = computed(() => {
 
 <template>
   <div class="flex flex-col justify-center items-center w-1/2">
+    <!-- when click on button the function the event listener will trigger paragraphSummary function -->
     <button
       class="bg-green-300 hover:bg-green-400 animate-bounce mt-6 w-3/4 rounded-xl h-10 font-bold text-lg"
       @click="paragraphSummary"
